@@ -1,0 +1,44 @@
+﻿@model AppLogin.ViewModels.LoginVM
+@{
+    Layout = null; /* No layout for this view */
+}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Welcome to Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AppLogin.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Login</h2>
+        <form asp-controller="Access" asp-action="Login" method="post">
+            <div class="mb-3">
+                <label for="Email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="Email" name="Email" asp-for="Email" required />
+            </div>
+            <div class="mb-3">
+                <label for="Password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="Password" name="Password" asp-for="Password" required />
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Iniciar session</button>
+
+            @if (ViewData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger mt-3">
+                    @ViewData["ErrorMessage"]
+                </div>
+            }
+
+            ¿No tienes una cuenta? <a href="@Url.Action("Register", "Access")">Registrarse</a>
+        </form>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿@model AppLogin.ViewModels.RegisterVM
+@{
+    Layout = null; /* No layout for this view */
+}
+
+<html>
+<head>    
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/AppLogin.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Register</h2>
+        <form asp-controller="Access" asp-action="Register" method="post">
+            <div class="mb-3">
+                <label for="Username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="Username" name="Username" asp-for="Username" required />
+            </div>
+            <div class="mb-3">
+                <label for="Email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="Email" name="Email" asp-for="Email" required />
+            </div>
+            <div class="mb-3">
+                <label for="Password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="Password" name="Password" asp-for="Password" required />
+            </div>
+            <div>
+                <label for="ConfirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" asp-for="ConfirmPassword" required />
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Registrar</button>
+
+            @if (ViewData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger mt-3">
+                    @ViewData["ErrorMessage"]
+                </div>
+            }
+
+            ¿Ya tienes una cuenta? <a href="@Url.Action("Login", "Access")">Inicia sesión</a>
+        </form>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
